@@ -1,0 +1,1 @@
+"use strict";var alert=function t(){t("hey!")};alert();
