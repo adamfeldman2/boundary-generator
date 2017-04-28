@@ -1,1 +1,1 @@
-"use strict";var alert=function t(){t("hey!")};alert();
+"use strict";function initMap(){var t=new google.maps.Map(document.getElementById("map"),{zoom:5,center:{lat:24.886,lng:-70.268},mapTypeId:"terrain"}),l=[{lat:25.774,lng:-80.19},{lat:18.466,lng:-66.118},{lat:32.321,lng:-64.757},{lat:25.774,lng:-80.19}];new google.maps.Polygon({paths:l,strokeColor:"#FF0000",strokeOpacity:.8,strokeWeight:2,fillColor:"#FF0000",fillOpacity:.35}).setMap(t)}
