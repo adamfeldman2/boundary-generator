@@ -64,8 +64,6 @@ main {
       margin-bottom: .3em; }
       main .map-inputs-wrapper h2 + span {
         font-size: .95em; }
-        main .map-inputs-wrapper h2 + span span {
-          text-decoration: underline; }
     main .map-inputs-wrapper .upper-button-wrapper {
       display: flex;
       justify-content: space-between;
