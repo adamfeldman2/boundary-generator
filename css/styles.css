@@ -184,5 +184,5 @@ main {
   main .map-wrapper {
     width: 58%;
     height: 100%; }
-    main .map-wrapper .map {
+    main .map-wrapper #map {
       height: 100%; }
