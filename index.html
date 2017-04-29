@@ -21,22 +21,25 @@
         <h2>Coordinates:</h2>
         <span>(E.g. 43.706787, -79.398385)</span>
         <div class="upper-button-wrapper">
-          <button id="add-coords"><span>+</span> Add Coordinate</button>
-          <button id="remove-coords"><span>&#10005;</span> Remove Coordinate</button>
+          <button id="add-coord"><span>+</span> Add Coordinate</button>
+          <button id="remove-coord"><span>&#10005;</span> Remove Coordinate</button>
         </div>
         <div class="coordinate-input-wrapper">
           <span>1</span>
-          <input type="text" class="lat" value="43.649254" placeholder="Latitude (Eg. 43.706787)">,
+          <input type="text" class="lat" value="43.649254" placeholder="Latitude (Eg. 43.706787)">
+          <span>,</span>
           <input type="text" class="lng" value="-79.374132" placeholder="Longitude (Eg. -79.398385)">
         </div>
         <div class="coordinate-input-wrapper">
           <span>2</span>
-          <input type="text" class="lat" value="43.660492" placeholder="Latitude (Eg. 43.706787)">,
+          <input type="text" class="lat" value="43.660492" placeholder="Latitude (Eg. 43.706787)">
+          <span>,</span>
           <input type="text" class="lng" value="-79.404731" placeholder="Longitude (Eg. -79.398385)">
         </div>
         <div class="coordinate-input-wrapper">
           <span>3</span>
-          <input type="text" class="lat" value="43.680492" placeholder="Latitude">,
+          <input type="text" class="lat" value="43.680492" placeholder="Latitude">
+          <span>,</span>
           <input type="text" class="lng" value="-79.404730" placeholder="Longitude">
         </div>
         <div class="lower-button-wrapper">
@@ -56,7 +59,6 @@
       <span>Built by: <a href="http://adamfeldman.io" target="_blank">Adam Feldman</a></span>
     </footer>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/scripts.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkuf6MkEiT7fH6ffIUKUfZq6qbVvyPe14&callback=initMap"type="text/javascript"></script>
 </body>

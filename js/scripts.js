@@ -78,3 +78,60 @@ function removePolygon() {
     document.getElementById('results-button').classList.remove('inactive');
   });
 }
+
+// add coordinate-group on click of add-coord
+function addCoordinate() {
+  // checks how many rows of coordinates exist
+  let numOfCoords = document.getElementsByClassName('coordinate-input-wrapper').length;
+  let lastCoord = document.getElementsByClassName('coordinate-input-wrapper')[numOfCoords - 1];
+
+  const addCoordinateButton = document.getElementById('add-coord');
+
+  addCoordinateButton.addEventListener('click', function() {
+    numOfCoords ++; // increment numOfCoords by 1
+
+    const createDiv = document.createElement('div');
+    createDiv.setAttribute('class', 'coordinate-input-wrapper');
+
+    const createSpan = document.createElement('span');
+    const spanText = document.createTextNode(numOfCoords);
+    createSpan.appendChild(spanText);
+    createDiv.appendChild(createSpan);
+
+    const createInput1 = document.createElement('input');
+
+    createInput1.setAttribute('type', 'text');
+    createInput1.setAttribute('class', 'lat');
+    createInput1.setAttribute('placeholder', 'Latitude');
+
+    const commaSpan = document.createElement('span');
+    const commaSpanText = document.createTextNode(',');
+    commaSpan.appendChild(commaSpanText);
+
+    const createInput2 = document.createElement('input');
+    createInput2.setAttribute('type', 'text');
+    createInput2.setAttribute('class', 'lng');
+    createInput2.setAttribute('placeholder', 'Longitude');
+
+    createDiv.appendChild(createInput1);
+    createDiv.appendChild(commaSpan);
+    createDiv.appendChild(createInput2);
+
+    lastCoord.insertAdjacentElement('afterend', createDiv);
+
+  });
+}
+
+function removeCoordinate() {
+  const removeCoordinateButton = document.getElementById('remove-coord');
+
+}
+
+// stores functions to be initiated
+function init() {
+  addCoordinate();
+  removeCoordinate()
+}
+
+// call init()
+init();

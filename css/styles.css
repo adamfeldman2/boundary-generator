@@ -10,12 +10,13 @@ button, input, select, textarea {
   text-decoration: none; }
 
 html {
-  font-size: 16px; }
+  font-size: 16px;
+  height: 100%; }
 
 body {
   font-size: 16px;
   color: #222;
-  height: 90vh;
+  height: 93%;
   font-family: 'Cutive Mono', monospace;
   max-width: 1280px;
   margin: 0 auto;
@@ -69,14 +70,9 @@ main {
       -ms-flex-pack: justify;
           justify-content: space-between; }
   main .map-inputs-wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    padding-right: .7em;
     width: 38%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column; }
+    overflow-y: auto; }
     main .map-inputs-wrapper h2 {
       font-size: 1.7em;
       margin-bottom: .3em; }
@@ -90,8 +86,8 @@ main {
           -ms-flex-pack: justify;
               justify-content: space-between;
       margin: 1.7em 0; }
-      main .map-inputs-wrapper .upper-button-wrapper #add-coords,
-      main .map-inputs-wrapper .upper-button-wrapper #remove-coords {
+      main .map-inputs-wrapper .upper-button-wrapper #add-coord,
+      main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
         font-size: 1.05em;
         position: relative;
         right: .7em;
@@ -100,12 +96,12 @@ main {
         color: #5a8c7d;
         padding: .5em;
         text-align: left; }
-        main .map-inputs-wrapper .upper-button-wrapper #add-coords:hover,
-        main .map-inputs-wrapper .upper-button-wrapper #remove-coords:hover {
+        main .map-inputs-wrapper .upper-button-wrapper #add-coord:hover,
+        main .map-inputs-wrapper .upper-button-wrapper #remove-coord:hover {
           color: #86b1a5; }
-      main .map-inputs-wrapper .upper-button-wrapper #add-coords {
-        width: 195px; }
-        main .map-inputs-wrapper .upper-button-wrapper #add-coords span {
+      main .map-inputs-wrapper .upper-button-wrapper #add-coord {
+        width: 185px; }
+        main .map-inputs-wrapper .upper-button-wrapper #add-coord span {
           font-size: 1.3em; }
       main .map-inputs-wrapper .upper-button-wrapper #remove-coords {
         width: 221px; }
@@ -122,7 +118,7 @@ main {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between; }
-      main .map-inputs-wrapper .coordinate-input-wrapper span {
+      main .map-inputs-wrapper .coordinate-input-wrapper span:first-of-type {
         font-size: 1.1em;
         color: rgba(34, 34, 34, 0.5);
         margin-right: 1em; }
