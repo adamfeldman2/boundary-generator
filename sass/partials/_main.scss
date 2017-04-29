@@ -1,0 +1,50 @@
+h1 {
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  height: 90%;
+  justify-content: space-between;
+
+  .map-inputs-wrapper {
+    display: flex;
+    width: 38%;
+    flex-direction: column;
+
+    .coordinate-input-wrapper {
+      display: flex;
+      margin-bottom: 1em;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        font-size: 1.4em;
+      }
+
+      input {
+        font-size: 1em;
+        width: 45%;
+        height: 30px;
+        padding: .3em;
+      }
+    }
+
+    button {
+      width: 40%;
+      margin-top: 1em;
+      cursor: pointer;
+    }
+
+  }
+
+  .map-wrapper {
+    width: 58%;
+    height: 100%;
+
+    .map {
+      height: 100%;
+    }
+  }
+}

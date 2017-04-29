@@ -5,23 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <title>Boundary Generator</title>
 </head>
 <body>
-  <h1>Boundary Generator</h1>
-  <main>
-    <div class="map-inputs-wrapper">
-      <input type="text" placeholder="">
-      <input type="text" placeholder="">
-      <input type="text" placeholder="">
-    </div>
-    <div class="map-wrapper">
-      <div id="map"></div>
-    </div>
-  </main>
+    <h1>Boundary Generator</h1>
+    <main>
+      <div class="map-inputs-wrapper">
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div class="coordinate-input-wrapper">
+          <span>1</span>
+          <input type="text" class="lat" value="103" placeholder="Latitude (Eg. 43.706787)">,
+          <input type="text" class="lng" value="-134.7067" placeholder="Longitude (Eg. -79.398385)">
+        </div>
+        <div class="coordinate-input-wrapper">
+          <span>2</span>
+          <input type="text" class="lat" value="53.8" placeholder="Latitude (Eg. 43.706787)">,
+          <input type="text" class="lng" value="-39.7523306787" placeholder="Longitude (Eg. -79.398385)">
+        </div>
+        <div class="coordinate-input-wrapper">
+          <span>3</span>
+          <input type="text" class="lat" value="57.78398" placeholder="Latitude (Eg. 43.706787)">,
+          <input type="text" class="lng" value="-79.77" placeholder="Longitude (Eg. -79.398385)">
+        </div>
+
+        <button id="add-coords">Add another coordinate</button>
+        <button id="results-button">Display Results</button>
+      </div>
+      <div class="map-wrapper">
+        <div id="map"></div>
+      </div>
+    </main>
 
   <script src="js/scripts.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkuf6MkEiT7fH6ffIUKUfZq6qbVvyPe14&callback=initMap"
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkuf6MkEiT7fH6ffIUKUfZq6qbVvyPe14&callback=initMap&libraries=places"
   type="text/javascript"></script>
 </body>
 </html>
