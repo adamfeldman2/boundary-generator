@@ -36,8 +36,14 @@ button {
   width: 48%;
   cursor: pointer;
   outline: 1px solid transparent;
+	user-select: none;
 
   &:hover {
     background-color: $color-blue-light;
   }
+
+	&.inactive {
+		pointer-events: none;
+		background-color: lightgrey;
+	}
 }

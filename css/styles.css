@@ -4,8 +4,6 @@ button, input, select, textarea {
   margin: 0; }
 
 * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -23,6 +21,10 @@ body {
   margin: 0 auto;
   padding: 3em 3%; }
 
+::-moz-selection {
+  background: #9cbfb5;
+  /* WebKit/Blink Browsers */ }
+
 ::selection {
   background: #9cbfb5;
   /* WebKit/Blink Browsers */ }
@@ -38,9 +40,16 @@ button {
   border: 1px solid transparent;
   width: 48%;
   cursor: pointer;
-  outline: 1px solid transparent; }
+  outline: 1px solid transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
   button:hover {
     background-color: #9cbfb5; }
+  button.inactive {
+    pointer-events: none;
+    background-color: lightgrey; }
 
 h1 {
   font-size: 3em;
@@ -52,21 +61,34 @@ h3 {
   margin-bottom: 3.5em; }
 
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 90%;
-  justify-content: space-between; }
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
   main .map-inputs-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 38%;
-    flex-direction: column; }
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
     main .map-inputs-wrapper h2 {
       font-size: 1.7em;
       margin-bottom: .3em; }
       main .map-inputs-wrapper h2 + span {
         font-size: .95em; }
     main .map-inputs-wrapper .upper-button-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
       margin: 1.7em 0; }
       main .map-inputs-wrapper .upper-button-wrapper #add-coords,
       main .map-inputs-wrapper .upper-button-wrapper #remove-coords {
@@ -90,10 +112,16 @@ main {
         main .map-inputs-wrapper .upper-button-wrapper #remove-coords span {
           font-size: .65em; }
     main .map-inputs-wrapper .coordinate-input-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       margin-bottom: 1.5em;
-      align-items: center;
-      justify-content: space-between; }
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
       main .map-inputs-wrapper .coordinate-input-wrapper span {
         font-size: 1.1em;
         color: rgba(34, 34, 34, 0.5);
@@ -109,8 +137,12 @@ main {
     main .map-inputs-wrapper .lower-button-wrapper {
       font-size: 1.05em;
       margin: 2.5em 0 1.7em;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between; }
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
   main .map-wrapper {
     width: 58%;
     height: 100%;

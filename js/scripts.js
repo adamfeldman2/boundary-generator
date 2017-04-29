@@ -26,6 +26,9 @@ function initMap() {
 
   // onClick of #results-button
   document.getElementById('results-button').addEventListener('click', function() {
+    this.classList.add('inactive');
+    document.getElementById('remove-boundary').classList.remove('inactive');
+
     getNewCoords() // calls getNewCoords()
 
     setPolygon = new google.maps.Polygon({
@@ -55,7 +58,7 @@ function getNewCoords() {
   for (i = 0; i < polygonCoords.length; i++) {
     bounds.extend(polygonCoords[i]);
   }
-  
+
   // centers map and fits entire polygon in view
   map.fitBounds(bounds);
 }
@@ -63,7 +66,6 @@ function getNewCoords() {
 // adds polygon to map
 function addPolygon() {
   setPolygon.setMap(map);
-
   // calls removePolygon()
   removePolygon();
 }
@@ -72,5 +74,7 @@ function addPolygon() {
 function removePolygon() {
   document.getElementById('remove-boundary').addEventListener('click', function() {
     setPolygon.setMap(null);
+    this.classList.add('inactive');
+    document.getElementById('results-button').classList.remove('inactive');
   });
 }
