@@ -1,8 +1,4 @@
 // global variables
-const getResults = document.getElementById('results-button');
-const getLat = document.getElementsByClassName('lat');
-const getLng = document.getElementsByClassName('lng');
-
 let polygonCoords = [ // will hold all coord objects
   // {lat: 43.653254, lng: -79.384132},
   // {lat: 43.660492, lng: -79.404731},
@@ -18,7 +14,7 @@ function initMap() {
     mapTypeId: 'terrain'
   });
 
-  getResults.addEventListener('click', function() {
+  document.getElementById('results-button').addEventListener('click', function() {
     getNewCoords() // calls getNewCoords()
 
     const setPolygon = new google.maps.Polygon({
@@ -35,6 +31,9 @@ function initMap() {
 }
 
 function getNewCoords() {
+  const getLat = document.getElementsByClassName('lat');
+  const getLng = document.getElementsByClassName('lng');
+
   polygonCoords.length = 0; // empties array before add new coords
 
   // loops through all coordinate-objects and passes each to polygonCoords array
@@ -46,10 +45,16 @@ function getNewCoords() {
       }
     );
   }
-  polygonCoords.push(polygonCoords[0]); // add first coord object to end of array to close polygon
+}
+
+function startAgain() {
+  document.getElementById('start-again').addEventListener('click', function() {
+    location.reload();
+  });
 }
 
 function init() {
+  startAgain();
 }
 
 init();
