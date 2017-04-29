@@ -2,22 +2,25 @@
 let polygonCoords = [ // will hold all coord objects
   // {lat: 43.653254, lng: -79.384132},
   // {lat: 43.660492, lng: -79.404731},
-  // {lat: 43.677255, lng: -79.370828},
-  // {lat: 43.653254, lng: -79.384132}
+  // {lat: 43.677255, lng: -79.370828}
 ];
+let map;
+let setPolygon;
 
 // builds initial map
 function initMap() {
-  const map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
     center: {lat: 43.653254, lng: -79.384132},
-    mapTypeId: 'terrain'
+    mapTypeId: 'roadmap',
+    styles: []
   });
 
+  // onClick of #results-button
   document.getElementById('results-button').addEventListener('click', function() {
     getNewCoords() // calls getNewCoords()
 
-    const setPolygon = new google.maps.Polygon({
+    setPolygon = new google.maps.Polygon({
       paths: polygonCoords,
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
@@ -25,8 +28,7 @@ function initMap() {
       fillColor: '#FF0000',
       fillOpacity: 0.35
     });
-
-    setPolygon.setMap(map); // sets new polygon on map
+    addPolygon(); // calls addPolygon();
   });
 }
 
@@ -47,14 +49,17 @@ function getNewCoords() {
   }
 }
 
-function startAgain() {
-  document.getElementById('start-again').addEventListener('click', function() {
-    location.reload();
+// adds polygon to map
+function addPolygon() {
+  setPolygon.setMap(map);
+
+  // calls removePolygon()
+  removePolygon();
+}
+
+// removes polygon from map
+function removePolygon() {
+  document.getElementById('remove-boundary').addEventListener('click', function() {
+    setPolygon.setMap(null);
   });
 }
-
-function init() {
-  startAgain();
-}
-
-init();
