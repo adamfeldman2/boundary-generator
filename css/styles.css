@@ -16,15 +16,40 @@ html {
 
 body {
   font-size: 16px;
+  color: #222;
   height: 90vh;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Cutive Mono', monospace;
   max-width: 1280px;
   margin: 0 auto;
   padding: 3em 3%; }
 
+::selection {
+  background: #9cbfb5;
+  /* WebKit/Blink Browsers */ }
+
+::-moz-selection {
+  background: #9cbfb5;
+  /* Gecko Browsers */ }
+
+button {
+  color: #FFF;
+  background-color: #86b1a5;
+  padding: .5em .7em;
+  border: 1px solid transparent;
+  width: 48%;
+  cursor: pointer;
+  outline: 1px solid transparent; }
+  button:hover {
+    background-color: #9cbfb5; }
+
 h1 {
-  margin-bottom: 1.5em;
+  font-size: 3em;
   text-align: center; }
+
+h3 {
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 3.5em; }
 
 main {
   display: flex;
@@ -34,24 +59,71 @@ main {
     display: flex;
     width: 38%;
     flex-direction: column; }
+    main .map-inputs-wrapper h2 {
+      font-size: 1.7em;
+      margin-bottom: .3em; }
+      main .map-inputs-wrapper h2 + span {
+        font-size: .95em; }
+        main .map-inputs-wrapper h2 + span span {
+          text-decoration: underline; }
+    main .map-inputs-wrapper .upper-button-wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.7em 0; }
+      main .map-inputs-wrapper .upper-button-wrapper #add-coords,
+      main .map-inputs-wrapper .upper-button-wrapper #remove-coords {
+        font-size: 1.05em;
+        position: relative;
+        right: .7em;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #5a8c7d;
+        padding: .5em;
+        text-align: left; }
+        main .map-inputs-wrapper .upper-button-wrapper #add-coords:hover,
+        main .map-inputs-wrapper .upper-button-wrapper #remove-coords:hover {
+          color: #86b1a5; }
+      main .map-inputs-wrapper .upper-button-wrapper #add-coords {
+        width: 195px; }
+        main .map-inputs-wrapper .upper-button-wrapper #add-coords span {
+          font-size: 1.3em; }
+      main .map-inputs-wrapper .upper-button-wrapper #remove-coords {
+        width: 221px; }
+        main .map-inputs-wrapper .upper-button-wrapper #remove-coords span {
+          font-size: .65em; }
     main .map-inputs-wrapper .coordinate-input-wrapper {
       display: flex;
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
       align-items: center;
       justify-content: space-between; }
       main .map-inputs-wrapper .coordinate-input-wrapper span {
-        font-size: 1.4em; }
+        font-size: 1.1em;
+        color: rgba(34, 34, 34, 0.5);
+        margin-right: 1em; }
       main .map-inputs-wrapper .coordinate-input-wrapper input {
-        font-size: 1em;
+        font-size: 1.2em;
         width: 45%;
         height: 30px;
-        padding: .3em; }
-    main .map-inputs-wrapper button {
-      width: 40%;
-      margin-top: 1em;
-      cursor: pointer; }
+        padding: .4em;
+        border: 1px solid transparent;
+        border-bottom: 1px solid #222;
+        outline: 1px solid transparent; }
+    main .map-inputs-wrapper .lower-button-wrapper {
+      font-size: 1.05em;
+      margin: 2.5em 0 1.7em;
+      display: flex;
+      justify-content: space-between; }
   main .map-wrapper {
     width: 58%;
-    height: 100%; }
+    height: 100%;
+    box-shadow: 0 0 2px rgba(34, 34, 34, 0.5); }
     main .map-wrapper #map {
       height: 100%; }
+
+footer {
+  font-size: .95em;
+  padding: 1.5em 0 .5em; }
+  footer a {
+    color: #5a8c7d; }
+    footer a:hover {
+      color: #86b1a5; }

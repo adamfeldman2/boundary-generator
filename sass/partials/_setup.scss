@@ -13,9 +13,31 @@ html {
 
 body {
   font-size: 16px;
+  color: $color-black;
   height: 90vh;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Cutive Mono', monospace;
   max-width: 1280px;
   margin: 0 auto;
   padding: 3em 3%;
+}
+
+::selection {
+  background: $color-blue-light; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $color-blue-light; /* Gecko Browsers */
+}
+
+button {
+  color: $color-white;
+  background-color: $color-blue-medium;
+  padding: .5em .7em;
+  border: 1px solid transparent;
+  width: 48%;
+  cursor: pointer;
+  outline: 1px solid transparent;
+
+  &:hover {
+    background-color: $color-blue-light;
+  }
 }
