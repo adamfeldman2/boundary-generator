@@ -32,9 +32,8 @@ body {
 button {
   color: $color-white;
   background-color: $color-blue-medium;
-  padding: .5em .7em;
+  padding: .5em .8em;
   border: 1px solid transparent;
-  width: 48%;
   cursor: pointer;
   outline: 1px solid transparent;
 	user-select: none;
@@ -45,6 +44,6 @@ button {
 
 	&.inactive {
 		pointer-events: none;
-		background-color: lightgrey;
+		background-color: $color-grey;
 	}
 }

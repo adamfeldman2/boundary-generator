@@ -24,8 +24,8 @@ function initMap() {
   });
 
 
-  // onClick of #results-button
-  document.getElementById('results-button').addEventListener('click', function() {
+  // onClick of #display-boundary
+  document.getElementById('display-boundary').addEventListener('click', function() {
     this.classList.add('inactive');
     document.getElementById('remove-boundary').classList.remove('inactive');
 
@@ -75,19 +75,18 @@ function removePolygon() {
   document.getElementById('remove-boundary').addEventListener('click', function() {
     setPolygon.setMap(null);
     this.classList.add('inactive');
-    document.getElementById('results-button').classList.remove('inactive');
+    document.getElementById('display-boundary').classList.remove('inactive');
   });
 }
 
 // add coordinate-group on click of add-coord
 function addCoordinate() {
-  // checks how many rows of coordinates exist
-  let numOfCoords = document.getElementsByClassName('coordinate-input-wrapper').length;
-  let lastCoord = document.getElementsByClassName('coordinate-input-wrapper')[numOfCoords - 1];
+  const lowerButtonWrapper = document.getElementsByClassName('lower-button-wrapper')[0];
 
   const addCoordinateButton = document.getElementById('add-coord');
 
   addCoordinateButton.addEventListener('click', function() {
+    let numOfCoords = document.getElementsByClassName('coordinate-input-wrapper').length;
     numOfCoords ++; // increment numOfCoords by 1
 
     const createDiv = document.createElement('div');
@@ -117,14 +116,20 @@ function addCoordinate() {
     createDiv.appendChild(commaSpan);
     createDiv.appendChild(createInput2);
 
-    lastCoord.insertAdjacentElement('afterend', createDiv);
+    lowerButtonWrapper.insertAdjacentElement('beforebegin', createDiv);
 
   });
 }
 
 function removeCoordinate() {
   const removeCoordinateButton = document.getElementById('remove-coord');
+  let numOfCoords = document.getElementsByClassName('coordinate-input-wrapper').length;
+  const coordinates = document.getElementsByClassName('coordinate-input-wrapper');
 
+  removeCoordinateButton.addEventListener('click', function() {
+    coordinates[coordinates.length - 1].parentNode.removeChild(coordinates[coordinates.length - 1]);
+    numOfCoords --;
+  });
 }
 
 // stores functions to be initiated

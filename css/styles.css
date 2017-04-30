@@ -37,9 +37,8 @@ body {
 button {
   color: #FFF;
   background-color: #86b1a5;
-  padding: .5em .7em;
+  padding: .5em .8em;
   border: 1px solid transparent;
-  width: 48%;
   cursor: pointer;
   outline: 1px solid transparent;
   -webkit-user-select: none;
@@ -50,7 +49,7 @@ button {
     background-color: #9cbfb5; }
   button.inactive {
     pointer-events: none;
-    background-color: lightgrey; }
+    background-color: #dadada; }
 
 h1 {
   font-size: 3em;
