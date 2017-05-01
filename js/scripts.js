@@ -23,7 +23,6 @@ function initMap() {
     styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"on"},{"color":"#716464"},{"weight":"0.01"}]},{"featureType":"administrative.country","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"geometry.stroke","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels.text.stroke","stylers":[{"visibility":"simplified"}]},{"featureType":"poi.attraction","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"simplified"},{"color":"#a05519"},{"saturation":"-13"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"color":"#84afa3"},{"lightness":52}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"visibility":"on"}]}]
   });
 
-
   // onClick of #display-boundary
   document.getElementById('display-boundary').addEventListener('click', function() {
     this.classList.add('inactive');
@@ -47,20 +46,32 @@ function getNewCoords() {
   const getLat = document.getElementsByClassName('lat');
   const getLng = document.getElementsByClassName('lng');
   const bounds = new google.maps.LatLngBounds();
+  let missingValue = null;
 
-  polygonCoords.length = 0; // empties array before add new coords
-  // loops through all coordinate-objects and passes each to polygonCoords array
   for(let i = 0; i < getLat.length; i++) {
-    polygonCoords.push(new google.maps.LatLng(parseFloat(getLat[i].value),parseFloat(getLng[i].value))
-    );
+    if(getLat[i].value === '' || getLng[i].value === '') {
+      missingValue = true;
+    }
   }
 
-  for (let i = 0; i < polygonCoords.length; i++) {
-    bounds.extend(polygonCoords[i]);
-  }
+  if(missingValue !== true) {
+    polygonCoords.length = 0; // empties array before add new coords
+      // loops through all coordinate-objects and passes each to polygonCoords array
+      for(let i = 0; i < getLat.length; i++) {
+        polygonCoords.push(new google.maps.LatLng(parseFloat(getLat[i].value),parseFloat(getLng[i].value))
+      );
+    }
 
-  // centers map and fits entire polygon in view
-  map.fitBounds(bounds);
+    for (let i = 0; i < polygonCoords.length; i++) {
+      bounds.extend(polygonCoords[i]);
+    }
+
+    // centers map and fits entire polygon in view
+    map.fitBounds(bounds);
+
+  } else {
+    document.getElementsByClassName('upper-button-wrapper')[0].classList.add('error');
+  }
 }
 
 // adds polygon to map
@@ -76,6 +87,7 @@ function removePolygon() {
     setPolygon.setMap(null);
     this.classList.add('inactive');
     document.getElementById('display-boundary').classList.remove('inactive');
+    document.getElementsByClassName('upper-button-wrapper')[0].classList.remove('error');
   });
 }
 

@@ -32,6 +32,28 @@ main {
       display: flex;
       justify-content: space-between;
       margin: 1.7em 0;
+      position: relative;
+
+      &.error {
+        position: relative;
+        bottom: 26px;
+
+        &::after {
+          content: 'Please fill in all coordinate fields';
+          padding: .3em 0;
+          text-transform: uppercase;
+          position: absolute;
+          bottom: -34px;
+          right: 50%;
+          transform: translateX(50%);
+          width: 97%;
+          text-align: center;
+          // display: none;
+          color: $color-red;
+          border: 1px solid $color-red;
+        }
+      }
+
 
       #add-coord,
       #remove-coord {
@@ -65,7 +87,6 @@ main {
         }
       }
     }
-
 
     .coordinate-input-wrapper {
       display: flex;

@@ -49,7 +49,7 @@ button {
     background-color: #9cbfb5; }
   button.inactive {
     pointer-events: none;
-    background-color: #dadada; }
+    background-color: #DADADA; }
 
 h1 {
   font-size: 3em;
@@ -84,7 +84,24 @@ main {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between;
-      margin: 1.7em 0; }
+      margin: 1.7em 0;
+      position: relative; }
+      main .map-inputs-wrapper .upper-button-wrapper.error {
+        position: relative;
+        bottom: 26px; }
+        main .map-inputs-wrapper .upper-button-wrapper.error::after {
+          content: 'Please fill in all coordinate fields';
+          padding: .3em 0;
+          text-transform: uppercase;
+          position: absolute;
+          bottom: -34px;
+          right: 50%;
+          -webkit-transform: translateX(50%);
+                  transform: translateX(50%);
+          width: 97%;
+          text-align: center;
+          color: #D82F2F;
+          border: 1px solid #D82F2F; }
       main .map-inputs-wrapper .upper-button-wrapper #add-coord,
       main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
         font-size: 1.05em;
