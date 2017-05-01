@@ -55,7 +55,7 @@ function getNewCoords() {
     );
   }
 
-  for (i = 0; i < polygonCoords.length; i++) {
+  for (let i = 0; i < polygonCoords.length; i++) {
     bounds.extend(polygonCoords[i]);
   }
 
