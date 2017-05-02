@@ -11,6 +11,7 @@ let setPolygon;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
+    scrollwheel: false,
     center: {lat: 43.653254, lng: -79.384132},
     mapTypeId: 'roadmap',
     mapTypeControl: false,
