@@ -1,12 +1,53 @@
 h1 {
   font-size: 3em;
   text-align: center;
+
+  @media all and (max-width: 715px) {
+    font-size: 7vw;
+  }
+
+  @media all and (max-width: 550px) {
+    font-size: 2.5em;
+    margin-bottom: .3em;
+  }
 }
 
 h3 {
   font-size: 1.2em;
   text-align: center;
   margin-bottom: 3.5em;
+
+  + span {
+    font-size: .82em;
+    display: none;
+
+    a {
+      color: $color-blue-dark;
+
+      &:hover {
+        color: $color-blue-medium;
+      }
+    }
+  }
+
+  @media all and (max-width: 1130px) {
+    margin-bottom: .5em;
+
+    + span {
+      display: block;
+      margin-bottom: 3.5em;
+      text-align: center;
+    }
+  }
+
+  @media all and (max-width: 715px) {
+    font-size: 1.05em;
+  }
+
+  @media all and (max-width: 550px) {
+    font-size: .95em;
+    margin-bottom: 1.2em;
+  }
 }
 
 main {
@@ -48,7 +89,6 @@ main {
           transform: translateX(50%);
           width: 97%;
           text-align: center;
-          // display: none;
           color: $color-red;
           border: 1px solid $color-red;
         }
@@ -57,7 +97,6 @@ main {
 
       #add-coord,
       #remove-coord {
-        font-size: 1.05em;
         position: relative;
         right: .7em;
         background-color: transparent;
@@ -79,11 +118,11 @@ main {
         }
       }
 
-      #remove-coords {
+      #remove-coord {
         width: 221px;
 
         span {
-          font-size: .65em;
+          font-size: .7em;
         }
       }
     }
@@ -126,6 +165,59 @@ main {
 
     #map {
       height: 100%;
+    }
+  }
+
+  @media all and (max-width: 1130px) {
+    display: block;
+
+    .map-inputs-wrapper {
+      width: 75%;
+      margin: 0 auto 2em;
+    }
+
+    .map-wrapper {
+      width: 75%;
+      height: 75%;
+      margin: 0 auto 3em;
+    }
+  }
+
+  @media all and (max-width: 675px) {
+    .map-inputs-wrapper {
+      width: 98%;
+    }
+
+    .map-wrapper {
+      width: 98%;
+      height: 65%;
+    }
+  }
+
+  @media all and (max-width: 480px) {
+    .map-inputs-wrapper {
+      margin-top: 5em;
+
+      h2 {
+        font-size: 1.6em;
+        text-align: center;
+
+        + span {
+          font-size: .9em;
+          text-align: center;
+          display: block;
+        }
+      }
+
+      .upper-button-wrapper {
+        flex-direction: column;
+        align-items: center;
+
+        #add-coord,
+        #remove-coord {
+          right: 0;
+        }
+      }
     }
   }
 }

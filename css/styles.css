@@ -4,6 +4,8 @@ button, input, select, textarea {
   margin: 0; }
 
 * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -22,10 +24,6 @@ body {
   margin: 0 auto;
   padding: 3em 3%; }
 
-::-moz-selection {
-  background: #9cbfb5;
-  /* WebKit/Blink Browsers */ }
-
 ::selection {
   background: #9cbfb5;
   /* WebKit/Blink Browsers */ }
@@ -41,10 +39,7 @@ button {
   border: 1px solid transparent;
   cursor: pointer;
   outline: 1px solid transparent;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
+  user-select: none; }
   button:hover {
     background-color: #9cbfb5; }
   button.inactive {
@@ -54,20 +49,44 @@ button {
 h1 {
   font-size: 3em;
   text-align: center; }
+  @media all and (max-width: 715px) {
+    h1 {
+      font-size: 7vw; } }
+  @media all and (max-width: 550px) {
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: .3em; } }
 
 h3 {
   font-size: 1.2em;
   text-align: center;
   margin-bottom: 3.5em; }
+  h3 + span {
+    font-size: .82em;
+    display: none; }
+    h3 + span a {
+      color: #5a8c7d; }
+      h3 + span a:hover {
+        color: #86b1a5; }
+  @media all and (max-width: 1130px) {
+    h3 {
+      margin-bottom: .5em; }
+      h3 + span {
+        display: block;
+        margin-bottom: 3.5em;
+        text-align: center; } }
+  @media all and (max-width: 715px) {
+    h3 {
+      font-size: 1.05em; } }
+  @media all and (max-width: 550px) {
+    h3 {
+      font-size: .95em;
+      margin-bottom: 1.2em; } }
 
 main {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 90%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
+  justify-content: space-between; }
   main .map-inputs-wrapper {
     padding-right: .7em;
     width: 38%;
@@ -78,12 +97,8 @@ main {
       main .map-inputs-wrapper h2 + span {
         font-size: .95em; }
     main .map-inputs-wrapper .upper-button-wrapper {
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
+      justify-content: space-between;
       margin: 1.7em 0;
       position: relative; }
       main .map-inputs-wrapper .upper-button-wrapper.error {
@@ -96,15 +111,13 @@ main {
           position: absolute;
           bottom: -34px;
           right: 50%;
-          -webkit-transform: translateX(50%);
-                  transform: translateX(50%);
+          transform: translateX(50%);
           width: 97%;
           text-align: center;
           color: #D82F2F;
           border: 1px solid #D82F2F; }
       main .map-inputs-wrapper .upper-button-wrapper #add-coord,
       main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
-        font-size: 1.05em;
         position: relative;
         right: .7em;
         background-color: transparent;
@@ -119,21 +132,15 @@ main {
         width: 185px; }
         main .map-inputs-wrapper .upper-button-wrapper #add-coord span {
           font-size: 1.3em; }
-      main .map-inputs-wrapper .upper-button-wrapper #remove-coords {
+      main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
         width: 221px; }
-        main .map-inputs-wrapper .upper-button-wrapper #remove-coords span {
-          font-size: .65em; }
+        main .map-inputs-wrapper .upper-button-wrapper #remove-coord span {
+          font-size: .7em; }
     main .map-inputs-wrapper .coordinate-input-wrapper {
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
       margin-bottom: 1.5em;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between; }
+      align-items: center;
+      justify-content: space-between; }
       main .map-inputs-wrapper .coordinate-input-wrapper span:first-of-type {
         font-size: 1.1em;
         color: rgba(34, 34, 34, 0.5);
@@ -149,18 +156,46 @@ main {
     main .map-inputs-wrapper .lower-button-wrapper {
       font-size: 1.05em;
       margin: 2.5em 0 1.7em;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between; }
+      justify-content: space-between; }
   main .map-wrapper {
     width: 58%;
     height: 100%;
     box-shadow: 0 0 2px rgba(34, 34, 34, 0.5); }
     main .map-wrapper #map {
       height: 100%; }
+  @media all and (max-width: 1130px) {
+    main {
+      display: block; }
+      main .map-inputs-wrapper {
+        width: 75%;
+        margin: 0 auto 2em; }
+      main .map-wrapper {
+        width: 75%;
+        height: 75%;
+        margin: 0 auto 3em; } }
+  @media all and (max-width: 675px) {
+    main .map-inputs-wrapper {
+      width: 98%; }
+    main .map-wrapper {
+      width: 98%;
+      height: 65%; } }
+  @media all and (max-width: 480px) {
+    main .map-inputs-wrapper {
+      margin-top: 5em; }
+      main .map-inputs-wrapper h2 {
+        font-size: 1.6em;
+        text-align: center; }
+        main .map-inputs-wrapper h2 + span {
+          font-size: .9em;
+          text-align: center;
+          display: block; }
+      main .map-inputs-wrapper .upper-button-wrapper {
+        flex-direction: column;
+        align-items: center; }
+        main .map-inputs-wrapper .upper-button-wrapper #add-coord,
+        main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
+          right: 0; } }
 
 footer {
   font-size: .95em;
@@ -169,3 +204,6 @@ footer {
     color: #5a8c7d; }
     footer a:hover {
       color: #86b1a5; }
+  @media all and (max-width: 1130px) {
+    footer {
+      display: none; } }
