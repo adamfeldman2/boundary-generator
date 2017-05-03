@@ -48,6 +48,9 @@ button {
           user-select: none; }
   button:hover {
     background-color: #92b9ae; }
+  button.active {
+    background-color: #86b1a5;
+    pointer-events: auto; }
   button.inactive {
     pointer-events: none;
     background-color: #EFEFEF; }

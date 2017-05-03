@@ -1,4 +1,9 @@
 // global variables
+const getLat = document.getElementsByClassName('lat');
+const getLng = document.getElementsByClassName('lng');
+const upperButtonWrapper = document.getElementsByClassName('upper-button-wrapper')[0];
+const displayBoundaryButton = document.getElementById('display-boundary');
+const getReminder = document.querySelector('.lower-button-wrapper span');
 let polygonCoords = [ // will hold all coord objects
   // {lat: 43.653254, lng: -79.384132},
   // {lat: 43.660492, lng: -79.404731},
@@ -25,7 +30,7 @@ function initMap() {
   });
 
   // onClick of #display-boundary
-  document.getElementById('display-boundary').addEventListener('click', function() {
+  displayBoundaryButton.addEventListener('click', function() {
     this.classList.add('inactive');
     document.getElementById('remove-boundary').classList.remove('inactive');
 
@@ -44,10 +49,8 @@ function initMap() {
 }
 
 function getNewCoords() {
-  const getLat = document.getElementsByClassName('lat');
-  const getLng = document.getElementsByClassName('lng');
   const bounds = new google.maps.LatLngBounds();
-  let missingValue = null;
+  let missingValue = false;
 
   for(let i = 0; i < getLat.length; i++) {
     if(getLat[i].value === '' || getLng[i].value === '') {
@@ -71,35 +74,54 @@ function getNewCoords() {
     map.fitBounds(bounds);
 
   } else {
-    document.getElementsByClassName('upper-button-wrapper')[0].classList.add('error');
+    displayBoundaryButton.classList.add('active');
+    displayBoundaryButton.classList.remove('inactive');
+    document.getElementById('remove-boundary').classList.add('inactive');
+    upperButtonWrapper.classList.add('error');
+    polygonCoords.length = 0;
   }
 }
 
 // adds polygon to map
 function addPolygon() {
-  const getReminder = document.querySelector('.lower-button-wrapper span');
+  let missingValue = false;
+
+  for(let i = 0; i < getLat.length; i++) {
+    if(getLat[i].value === '' || getLng[i].value === '') {
+      missingValue = true;
+    }
+  }
+
+  const getError = upperButtonWrapper;
   setPolygon.setMap(map);
-  getReminder.classList.add('active');
+  if(!upperButtonWrapper.classList.contains('error')) {
+    getReminder.classList.add('active');
+  }
+
+  if(getError.classList.contains('error') && missingValue === false) {
+    upperButtonWrapper.classList.remove('error');
+    getReminder.classList.add('active');
+
+  }
+
   // calls removePolygon()
   removePolygon();
 }
 
 // removes polygon from map
 function removePolygon() {
-  const getReminder = document.querySelector('.lower-button-wrapper span');
   document.getElementById('remove-boundary').addEventListener('click', function() {
     setPolygon.setMap(null);
     this.classList.add('inactive');
     getReminder.classList.remove('active');
-    document.getElementById('display-boundary').classList.remove('inactive');
-    document.getElementsByClassName('upper-button-wrapper')[0].classList.remove('error');
+    displayBoundaryButton.classList.remove('inactive');
+    upperButtonWrapper.classList.remove('error');
   });
 }
 
 // add coordinate-group on click of add-coord
 function addCoordinate() {
   const lowerButtonWrapper = document.getElementsByClassName('lower-button-wrapper')[0];
-
   const addCoordinateButton = document.getElementById('add-coord');
 
   addCoordinateButton.addEventListener('click', function() {

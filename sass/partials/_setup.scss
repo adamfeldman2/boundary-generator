@@ -43,6 +43,11 @@ button {
     background-color: $color-blue-light;
   }
 
+	&.active {
+		background-color: $color-blue-medium;
+		pointer-events: auto;
+	}
+
 	&.inactive {
 		pointer-events: none;
 		background-color: $color-grey;
