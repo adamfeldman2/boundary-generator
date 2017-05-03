@@ -15,11 +15,13 @@ h1 {
 h3 {
   font-size: 1.2em;
   text-align: center;
-  margin-bottom: 3.5em;
+  margin-bottom: .4em;
 
   + span {
-    font-size: .82em;
-    display: none;
+    font-size: .85em;
+    display: block;
+    margin-bottom: 4em;
+    text-align: center;
 
     a {
       color: $color-blue-dark;
@@ -30,23 +32,17 @@ h3 {
     }
   }
 
-  @media all and (max-width: 1130px) {
-    margin-bottom: .5em;
-
-    + span {
-      display: block;
-      margin-bottom: 3.5em;
-      text-align: center;
-    }
-  }
-
   @media all and (max-width: 715px) {
     font-size: 1.05em;
+
+    + span {
+      font-size: .8em;
+    }
   }
 
   @media all and (max-width: 550px) {
     font-size: .95em;
-    margin-bottom: 1.2em;
+    margin-bottom: 1em;
   }
 }
 
@@ -155,6 +151,16 @@ main {
       margin: 2.5em 0 1.7em;
       display: flex;
       justify-content: space-between;
+
+      + span {
+        font-size: 1.03em;
+        color: $color-blue-dark;
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
     }
   }
 

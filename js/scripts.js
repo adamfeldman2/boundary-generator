@@ -77,16 +77,20 @@ function getNewCoords() {
 
 // adds polygon to map
 function addPolygon() {
+  const getReminder = document.querySelector('.lower-button-wrapper + span');
   setPolygon.setMap(map);
+  getReminder.classList.add('active');
   // calls removePolygon()
   removePolygon();
 }
 
 // removes polygon from map
 function removePolygon() {
+  const getReminder = document.querySelector('.lower-button-wrapper + span');
   document.getElementById('remove-boundary').addEventListener('click', function() {
     setPolygon.setMap(null);
     this.classList.add('inactive');
+    getReminder.classList.remove('active');
     document.getElementById('display-boundary').classList.remove('inactive');
     document.getElementsByClassName('upper-button-wrapper')[0].classList.remove('error');
   });

@@ -28,26 +28,27 @@
         </div>
         <div class="coordinate-input-wrapper">
           <span>1</span>
-          <input type="text" class="lat" placeholder="Latitude" required>
+          <input type="text" class="lat" value="43.706787" placeholder="Latitude" required>
           <span>,</span>
-          <input type="text" class="lng" placeholder="Longitude" required>
+          <input type="text" class="lng" value="-79.398385" placeholder="Longitude" required>
         </div>
         <div class="coordinate-input-wrapper">
           <span>2</span>
-          <input type="text" class="lat" placeholder="Latitude" required>
+          <input type="text" class="lat" value="43.756787" placeholder="Latitude" required>
           <span>,</span>
-          <input type="text" class="lng" placeholder="Longitude" required>
+          <input type="text" class="lng" value="-79.398385" placeholder="Longitude" required>
         </div>
         <div class="coordinate-input-wrapper">
           <span>3</span>
-          <input type="text" class="lat" placeholder="Latitude" required>
+          <input type="text" class="lat" value="43.796787" placeholder="Latitude" required>
           <span>,</span>
-          <input type="text" class="lng" placeholder="Longitude" required>
+          <input type="text" class="lng" value="-79.508385" placeholder="Longitude" required>
         </div>
         <div class="lower-button-wrapper">
           <button id="display-boundary">Display Boundary</button>
           <button id="remove-boundary" class="inactive">Remove Boundary</button>
         </div>
+        <span>*Remove boundary before displaying another*</span>
       </div> <!-- /.map-inputs-wrapper -->
 
       <!-- map-wrapper -->
@@ -55,11 +56,6 @@
         <div id="map"></div>
       </div>
     </main>
-
-    <!-- footer -->
-    <footer>
-      <span>Built by: <a href="http://adamfeldman.io" target="_blank">Adam Feldman</a></span>
-    </footer>
 
   <script src="js/scripts-min.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkuf6MkEiT7fH6ffIUKUfZq6qbVvyPe14&callback=initMap"type="text/javascript"></script>
