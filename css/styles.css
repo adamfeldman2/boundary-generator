@@ -23,33 +23,34 @@ body {
   padding: 3em 3%; }
 
 ::-moz-selection {
-  background: #9cbfb5;
+  background: #92b9ae;
   /* WebKit/Blink Browsers */ }
 
 ::selection {
-  background: #9cbfb5;
+  background: #92b9ae;
   /* WebKit/Blink Browsers */ }
 
 ::-moz-selection {
-  background: #9cbfb5;
+  background: #92b9ae;
   /* Gecko Browsers */ }
 
 button {
   color: #FFF;
   background-color: #86b1a5;
-  padding: .5em .8em;
+  padding: 1em;
   border: 1px solid transparent;
   cursor: pointer;
+  width: 50%;
   outline: 1px solid transparent;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none; }
   button:hover {
-    background-color: #9cbfb5; }
+    background-color: #92b9ae; }
   button.inactive {
     pointer-events: none;
-    background-color: #E8E8E8; }
+    background-color: #EFEFEF; }
 
 h1 {
   font-size: 3em;
@@ -144,7 +145,8 @@ main {
         main .map-inputs-wrapper .upper-button-wrapper #add-coord span {
           font-size: 1.3em; }
       main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
-        width: 221px; }
+        width: 221px;
+        padding-left: 21px; }
         main .map-inputs-wrapper .upper-button-wrapper #remove-coord span {
           font-size: .7em; }
     main .map-inputs-wrapper .coordinate-input-wrapper {
@@ -172,18 +174,23 @@ main {
         outline: 1px solid transparent; }
     main .map-inputs-wrapper .lower-button-wrapper {
       font-size: 1.05em;
-      margin: 2.5em 0 1.7em;
+      margin: 2.5em 0 4em;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
-              justify-content: space-between; }
-      main .map-inputs-wrapper .lower-button-wrapper + span {
-        font-size: 1.03em;
+              justify-content: space-between;
+      position: relative; }
+      main .map-inputs-wrapper .lower-button-wrapper span {
+        font-size: .98em;
+        position: absolute;
+        bottom: -52px;
+        width: 100%;
         color: #5a8c7d;
-        display: none; }
-        main .map-inputs-wrapper .lower-button-wrapper + span.active {
+        display: none;
+        text-align: center; }
+        main .map-inputs-wrapper .lower-button-wrapper span.active {
           display: block; }
   main .map-wrapper {
     width: 58%;
@@ -227,4 +234,10 @@ main {
                 align-items: center; }
         main .map-inputs-wrapper .upper-button-wrapper #add-coord,
         main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
-          right: 0; } }
+          right: 0; }
+        main .map-inputs-wrapper .upper-button-wrapper #remove-coord {
+          padding-left: 1em; }
+      main .map-inputs-wrapper .coordinate-input-wrapper span:first-of-type {
+        font-size: .9em; }
+      main .map-inputs-wrapper .coordinate-input-wrapper input {
+        font-size: .95em; } }

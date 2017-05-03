@@ -32,9 +32,10 @@ body {
 button {
   color: $color-white;
   background-color: $color-blue-medium;
-  padding: .5em .8em;
+  padding: 1em;
   border: 1px solid transparent;
   cursor: pointer;
+	width: 50%;
   outline: 1px solid transparent;
 	user-select: none;
 

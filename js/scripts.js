@@ -77,7 +77,7 @@ function getNewCoords() {
 
 // adds polygon to map
 function addPolygon() {
-  const getReminder = document.querySelector('.lower-button-wrapper + span');
+  const getReminder = document.querySelector('.lower-button-wrapper span');
   setPolygon.setMap(map);
   getReminder.classList.add('active');
   // calls removePolygon()
@@ -86,7 +86,7 @@ function addPolygon() {
 
 // removes polygon from map
 function removePolygon() {
-  const getReminder = document.querySelector('.lower-button-wrapper + span');
+  const getReminder = document.querySelector('.lower-button-wrapper span');
   document.getElementById('remove-boundary').addEventListener('click', function() {
     setPolygon.setMap(null);
     this.classList.add('inactive');
