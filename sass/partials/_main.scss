@@ -157,7 +157,9 @@ main {
       span {
         font-size: .98em;
         position: absolute;
+        right: 50%;
         bottom: -52px;
+        transform: translateX(50%);
         width: 100%;
         color: $color-blue-dark;
         display: none;
@@ -174,6 +176,7 @@ main {
     width: 58%;
     height: 100%;
     box-shadow: 0 0 2px $color-black-50;
+    margin-bottom: 3em;
 
     #map {
       height: 100%;
