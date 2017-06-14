@@ -4,6 +4,7 @@ const getLng = document.getElementsByClassName('lng');
 const upperButtonWrapper = document.getElementsByClassName('upper-button-wrapper')[0];
 const displayBoundaryButton = document.getElementById('display-boundary');
 const getReminder = document.querySelector('.lower-button-wrapper span');
+let address;
 let polygonCoords = [ // will hold all coord objects
   // {lat: 43.653254, lng: -79.384132},
   // {lat: 43.660492, lng: -79.404731},
@@ -46,7 +47,35 @@ function initMap() {
     });
     addPolygon(); // calls addPolygon();
   });
+
+  getGeocode();
+
+  function getGeocode() {
+    const geocodeInput = document.querySelector('#geocodeInput');
+    const geocodeSubmit = document.querySelector('#geocodeSubmit');
+    geocodeSubmit.addEventListener('click', function(event) {
+      event.preventDefault();
+      address = geocodeInput.value;
+      thing(address);
+    });
+  }
+
+  function thing(searchedAddress) {
+    const geocoder = new google.maps.Geocoder();
+    const address = searchedAddress;
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+
+      if (status == google.maps.GeocoderStatus.OK) {
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
+        console.log(latitude, longitude);
+        console.log(searchedAddress);
+      }
+    });
+  }
 }
+
 
 function getNewCoords() {
   const bounds = new google.maps.LatLngBounds();
