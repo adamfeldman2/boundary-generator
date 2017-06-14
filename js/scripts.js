@@ -101,9 +101,7 @@ function addPolygon() {
   if(getError.classList.contains('error') && missingValue === false) {
     upperButtonWrapper.classList.remove('error');
     getReminder.classList.add('active');
-
   }
-
   // calls removePolygon()
   removePolygon();
 }
@@ -128,35 +126,16 @@ function addCoordinate() {
     let numOfCoords = document.getElementsByClassName('coordinate-input-wrapper').length;
     numOfCoords ++; // increment numOfCoords by 1
 
+    const newInputs = `
+        <span>${numOfCoords}</span>
+        <input type="text" class="lat" placeholder="Latitude" required>
+        <span>,</span>
+        <input type="text" class="lng" placeholder="Longitude" required>
+      `;
+
     const createDiv = document.createElement('div');
     createDiv.setAttribute('class', 'coordinate-input-wrapper');
-
-    const createSpan = document.createElement('span');
-    const spanText = document.createTextNode(numOfCoords);
-    createSpan.appendChild(spanText);
-    createDiv.appendChild(createSpan);
-
-    const createInput1 = document.createElement('input');
-
-    createInput1.setAttribute('type', 'text');
-    createInput1.setAttribute('class', 'lat');
-    createInput1.setAttribute('placeholder', 'Latitude');
-
-    const commaSpan = document.createElement('span');
-    const commaSpanText = document.createTextNode(',');
-    commaSpan.appendChild(commaSpanText);
-
-    const createInput2 = document.createElement('input');
-    createInput2.setAttribute('type', 'text');
-    createInput2.setAttribute('class', 'lng');
-    createInput2.setAttribute('placeholder', 'Longitude');
-
-    createDiv.appendChild(createInput1);
-    createDiv.appendChild(commaSpan);
-    createDiv.appendChild(createInput2);
-
-    lowerButtonWrapper.insertAdjacentElement('beforebegin', createDiv);
-
+    createDiv.innerHTML = newInputs;  lowerButtonWrapper.insertAdjacentElement('beforebegin', createDiv);
   });
 }
 
@@ -177,5 +156,4 @@ function init() {
   removeCoordinate()
 }
 
-// call init()
-init();
+init(); // call init()
