@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Google Analytics -->
   <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-90374741-5', 'auto');
-  ga('send', 'pageview');
-
+    ga('create', 'UA-90374741-5', 'auto');
+    ga('send', 'pageview');
   </script>
   <!-- Google Analytics End -->
   <script src="https://use.fontawesome.com/ba93120002.js"></script>
@@ -25,55 +27,51 @@
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
   <title>GPS Boundary Generator</title>
 </head>
+
 <body>
-    <h1>GPS Boundary Generator</h1>
-    <h3>Create boundaries using GPS coordinates and Google Maps</h3>
-    <span>Built by: <a href="http://adamfeldman.io" target="_blank">Adam Feldman</a></span>
-    <main>
-      <!-- map-inputs-wrapper -->
-      <div class="map-inputs-wrapper">
-        <h2>Coordinates:</h2>
-        <span>(E.g. 43.706787, -79.398385)</span>
-        <div class="upper-button-wrapper">
-          <button id="add-coord"><span>+</span> Add Coordinate</button>
-          <button id="remove-coord"><span>&#10005;</span> Remove Coordinate</button>
-        </div>
-        <form action="">
-          <input type="text" id="geocodeInput">
-          <input type="submit" id="geocodeSubmit">
-        </form>
-        <div class="coordinate-input-wrapper">
-          <span>1</span>
-          <input type="text" class="lat" placeholder="Latitude" value="43.701187" required>
-          <span>,</span>
-          <input type="text" class="lng" placeholder="Longitude" value="-79.398885" required>
-        </div>
-        <div class="coordinate-input-wrapper">
-          <span>2</span>
-          <input type="text" class="lat" placeholder="Latitude" value="43.705787" required>
-          <span>,</span>
-          <input type="text" class="lng" placeholder="Longitude" value="-79.395585" required>
-        </div>
-        <div class="coordinate-input-wrapper">
-          <span>3</span>
-          <input type="text" class="lat" placeholder="Latitude" value="43.701987" required>
-          <span>,</span>
-          <input type="text" class="lng" placeholder="Longitude" value="-79.391185" required>
-        </div>
-        <div class="lower-button-wrapper">
-          <button id="display-boundary">Display Boundary</button>
-          <button id="remove-boundary" class="inactive">Remove Boundary</button>
-          <span>*Remove boundary before displaying another*</span>
-        </div>
-      </div> <!-- /.map-inputs-wrapper -->
-
-      <!-- map-wrapper -->
-      <div class="map-wrapper">
-        <div id="map"></div>
+  <h1>GPS Boundary Generator</h1>
+  <h3>Create boundaries using GPS coordinates and Google Maps</h3>
+  <span>Built by: <a href="http://adamfeldman.io" target="_blank">Adam Feldman</a></span>
+  <main>
+    <!-- map-inputs-wrapper -->
+    <div class="map-inputs-wrapper">
+      <h2>Coordinates:</h2>
+      <span>(E.g. 43.706787, -79.398385)</span>
+      <div class="upper-button-wrapper">
+        <button id="add-coord"><span>+</span> Add Coordinate</button>
+        <button id="remove-coord"><span>&#10005;</span> Remove Coordinate</button>
       </div>
-    </main>
 
+      <div class="coordinate-input-wrapper">
+        <span>1</span>
+        <input type="text" class="geo" placeholder="Coming soon..." value="45 Charles Street East, Toronto, Ontario" required>
+      </div>
+      <div class="coordinate-input-wrapper">
+        <span>2</span>
+        <input type="text" class="geo" placeholder="Coming soon..." value="Montreal, Quebec" required>
+      </div>
+      <div class="coordinate-input-wrapper">
+        <span>3</span>
+        <input type="text" class="geo" placeholder="Coming soon..." value="Burlington, Vermont" required>
+      </div>
+      <div class="lower-button-wrapper">
+        <button id="display-boundary">Display Boundary</button>
+        <button id="remove-boundary" class="inactive">Remove Boundary</button>
+        <span>*Remove boundary before displaying another*</span>
+      </div>
+    </div>
+    <!-- /.map-inputs-wrapper -->
+
+    <!-- map-wrapper -->
+    <div class="map-wrapper">
+      <div id="map"></div>
+    </div>
+  </main>
+
+  <script src="js/map-styles.js"></script>
   <script src="js/scripts-min.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkuf6MkEiT7fH6ffIUKUfZq6qbVvyPe14&callback=initMap"type="text/javascript"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkuf6MkEiT7fH6ffIUKUfZq6qbVvyPe14&libraries=places&callback=initMap"
+    type="text/javascript"></script>
 </body>
+
 </html>
