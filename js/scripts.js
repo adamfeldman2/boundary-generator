@@ -1,8 +1,6 @@
 // global variables
-// const getGeo = document.getElementsByClassName('geo');
-// const upperButtonWrapper = document.getElementsByClassName('upper-button-wrapper')[0];
 const displayBoundaryButton = document.getElementById('display-boundary');
-// const getReminder = document.querySelector('.lower-button-wrapper span');
+const removeBoundaryButton = document.getElementById('remove-boundary');
 let polygonCoords = [ // will hold all coord objects
   // {lat: 43.653254, lng: -79.384132},
   // {lat: 43.660492, lng: -79.404731},
@@ -10,7 +8,6 @@ let polygonCoords = [ // will hold all coord objects
 ];
 let map;
 let setPolygon;
-
 
 // builds initial map
 function initMap() {
@@ -29,20 +26,21 @@ function initMap() {
     styles: googleMapStylesArray
   });
 
-
   // onClick of #display-boundary
   displayBoundaryButton.addEventListener('click', function() {
     // Empty polygonCoords array
     polygonCoords.length = 0;
-    // set display boundary button to .inactive
-    this.classList.add('inactive');
-    // remove class of inactive from remove boundary button
-    document.getElementById('remove-boundary').classList.remove('inactive');
-
+    
     // function that returns a completed promise  
     convertGeoCodeToCoordsPromise()
-      //  if successful, run, .then
-      .then(function() {
+      
+    //  if successful, run, .then
+    .then(function() {
+      // set display boundary button to .inactive
+      displayBoundaryButton.classList.add('inactive');
+      // remove class of inactive from remove boundary button
+      document.getElementById('remove-boundary').classList.remove('inactive');
+
         const bounds = new google.maps.LatLngBounds();
         setPolygon = new google.maps.Polygon({
           paths: polygonCoords,
@@ -75,7 +73,7 @@ function convertGeoCodeToCoordsPromise() {
     // store all .geo elements in variable
     const geocodeInput = document.querySelectorAll('.geo');
 
-    geocodeInput.forEach((input) => {
+    geocodeInput.forEach((input, i) => {
       // transform input value to a coordinate
       geocoder.geocode({ 'address': input.value }, function(results, status) {
 
@@ -84,15 +82,14 @@ function convertGeoCodeToCoordsPromise() {
           const longitude = results[0].geometry.location.lng();
           // push the coordinate to the polygonCoords array
           polygonCoords.push(new google.maps.LatLng(latitude, longitude));
-          
+
           // once the loop has completed, call the resolve function of the promise
           if (polygonCoords.length === geocodeInput.length) {
             resolve();
           }
-        // runs if there is an error with the user's input values
+          // runs if there is an error with the user's input values
         } else {
-          console.error('There was an issue with the GeocoderStatus.');
-          alert('Invalid input values. Try again.');
+          alert(`Input field ${i + 1} is invalid. Try again.`);
         }
       });
     });
@@ -102,98 +99,36 @@ function convertGeoCodeToCoordsPromise() {
   return promise;
 }
 
-   
-
-
-
-// function getNewCoords() {
-//   const bounds = new google.maps.LatLngBounds();
-//   let missingValue = false;
-
-//   for (let i = 0; i < getLat.length; i++) {
-//     if (getLat[i].value === '' || getLng[i].value === '') {
-//       missingValue = true;
-//     }
-//   }
-
-//   if (!missingValue) {
-//     polygonCoords.length = 0; // empties array before add new coords
-//     // loops through all coordinate-objects and passes each to polygonCoords array
-//     for (let i = 0; i < getLat.length; i++) {
-//       // polygonCoords.push(new google.maps.LatLng(parseFloat(getLat[i].value), parseFloat(getLng[i].value))
-//       polygonCoords.push(new google.maps.LatLng(parseFloat(getLat[i].value), parseFloat(getLng[i].value)));
-//     }
-
-//     for (let i = 0; i < polygonCoords.length; i++) {
-//       bounds.extend(polygonCoords[i]);
-//     }
-
-//     // centers map and fits entire polygon in view
-//     map.fitBounds(bounds);
-
-//   } else {
-//     displayBoundaryButton.classList.add('active');
-//     displayBoundaryButton.classList.remove('inactive');
-//     document.getElementById('remove-boundary').classList.add('inactive');
-//     upperButtonWrapper.classList.add('error');
-//     polygonCoords.length = 0;
-//   }
-// }
-
-// adds polygon to map
-// function addPolygon() {
-//   // let missingValue = false;
-
-//   // for (let i = 0; i < getLat.length; i++) {
-//   //   if (getLat[i].value === '' || getLng[i].value === '') {
-//   //     missingValue = true;
-//   //   }
-//   // }
-
-//   const getError = upperButtonWrapper;
-//   setPolygon.setMap(map);
-//   if (!upperButtonWrapper.classList.contains('error')) {
-//     getReminder.classList.add('active');
-//   }
-
-//   if (getError.classList.contains('error') && missingValue === false) {
-//     upperButtonWrapper.classList.remove('error');
-//     getReminder.classList.add('active');
-//   }
-//   // calls removePolygon()
-//   removePolygon();
-// }
-
-// removes polygon from map
 function removePolygon() {
-  document.getElementById('remove-boundary').addEventListener('click', function() {
-    setPolygon.setMap(null);
-    this.classList.add('inactive');
-    getReminder.classList.remove('active');
-    displayBoundaryButton.classList.remove('inactive');
-    upperButtonWrapper.classList.remove('error');
-  });
+  // removes polygon from map
+  setPolygon.setMap(null);
+  removeBoundaryButton.classList.add('inactive');
+  displayBoundaryButton.classList.remove('inactive');
 }
 
 // add coordinate-group on click of add-coord
 function addCoordinate() {
-  const lowerButtonWrapper = document.getElementsByClassName('lower-button-wrapper')[0];
+  const lowerButtonWrapper = document.querySelector('.lower-button-wrapper');
   const addCoordinateButton = document.getElementById('add-coord');
 
   addCoordinateButton.addEventListener('click', function() {
+    if (displayBoundaryButton.classList.contains('inactive')) {
+      // clears the map
+      removePolygon();
+    }
+
     let numOfCoords = document.getElementsByClassName('coordinate-input-wrapper').length;
     numOfCoords++; // increment numOfCoords by 1
 
     const newInputs = `
         <span>${numOfCoords}</span>
-        <input type="text" class="lat" placeholder="Latitude" required>
-        <span>,</span>
-        <input type="text" class="lng" placeholder="Longitude" required>
+        <input type="text" class="geo" placeholder="" required>
       `;
 
     const createDiv = document.createElement('div');
     createDiv.setAttribute('class', 'coordinate-input-wrapper');
-    createDiv.innerHTML = newInputs; lowerButtonWrapper.insertAdjacentElement('beforebegin', createDiv);
+    createDiv.innerHTML = newInputs;
+    document.querySelector('.inputs-container').appendChild(createDiv);
   });
 }
 
@@ -203,6 +138,11 @@ function removeCoordinate() {
   const coordinates = document.getElementsByClassName('coordinate-input-wrapper');
 
   removeCoordinateButton.addEventListener('click', function() {
+    if (displayBoundaryButton.classList.contains('inactive')) {
+      // clears the map
+      removePolygon();
+    }
+
     coordinates[coordinates.length - 1].parentNode.removeChild(coordinates[coordinates.length - 1]);
     numOfCoords--;
   });
@@ -211,15 +151,9 @@ function removeCoordinate() {
 // stores functions to be initiated
 function init() {
   addCoordinate();
-  removeCoordinate()
+  removeCoordinate();
+  removeBoundaryButton.addEventListener('click', removePolygon);
+
 }
 
-init(); // call init()
-
-
-
-
-
-
-
-
+init();

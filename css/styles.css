@@ -68,7 +68,7 @@ h1 {
       margin-bottom: .3em; } }
 
 h3 {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: center;
   margin-bottom: .4em; }
   h3 + span {
@@ -100,13 +100,15 @@ main {
           justify-content: space-between; }
   main .map-inputs-wrapper {
     padding-right: .7em;
-    width: 38%;
-    overflow-y: auto; }
-    main .map-inputs-wrapper h2 {
-      font-size: 1.7em;
-      margin-bottom: .3em; }
-      main .map-inputs-wrapper h2 + span {
-        font-size: .95em; }
+    width: 44%; }
+    main .map-inputs-wrapper .how-to {
+      font-size: 1.3em;
+      letter-spacing: -1px;
+      line-height: 1.4; }
+      @media all and (max-width: 500px) {
+        main .map-inputs-wrapper .how-to {
+          text-align: center;
+          font-size: 1.15em; } }
     main .map-inputs-wrapper .upper-button-wrapper {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -200,7 +202,7 @@ main {
         main .map-inputs-wrapper .lower-button-wrapper span.active {
           display: block; }
   main .map-wrapper {
-    width: 58%;
+    width: 52%;
     height: 100%;
     -webkit-box-shadow: 0 0 2px rgba(34, 34, 34, 0.5);
             box-shadow: 0 0 2px rgba(34, 34, 34, 0.5);
@@ -250,3 +252,6 @@ main {
         font-size: .9em; }
       main .map-inputs-wrapper .coordinate-input-wrapper input {
         font-size: .95em; } }
+  @media all and (max-width: 480px) and (max-width: 550px) {
+    main .map-inputs-wrapper {
+      margin-top: 3em; } }

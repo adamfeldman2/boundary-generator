@@ -13,7 +13,7 @@ h1 {
 }
 
 h3 {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: center;
   margin-bottom: .4em;
 
@@ -53,15 +53,17 @@ main {
 
   .map-inputs-wrapper {
     padding-right: .7em;
-    width: 38%;
-    overflow-y: auto;
+    width: 44%;
+    // overflow-y: auto;
 
-    h2 {
-      font-size: 1.7em;
-      margin-bottom: .3em;
+    .how-to {
+      font-size: 1.3em;
+      letter-spacing: -1px;
+      line-height: 1.4;
 
-      + span {
-        font-size: .95em;
+      @media all and (max-width: 500px) {
+        text-align: center;
+        font-size: 1.15em;
       }
     }
 
@@ -173,7 +175,7 @@ main {
   }
 
   .map-wrapper {
-    width: 58%;
+    width: 52%;
     height: 100%;
     box-shadow: 0 0 2px $color-black-50;
     margin-bottom: 3em;
@@ -246,6 +248,10 @@ main {
         input {
           font-size: .95em;
         }
+      }
+
+      @media all and (max-width: 550px) {
+        margin-top: 3em;
       }
     }
   }
